@@ -9,13 +9,11 @@
 <body>
 	<div class="container wrapper">
 	<div id="top">
-		<h1>Web Application Programming and Hacking</h1>
-		<h2>Front end web development lab</h2>
-		<h3>Instructor: Dr. Phu Phung</h3>
+		<h1>Sai Murali Maitreya Javvadi</h1>
+		<h2>Web Application Developer</h2>
 	</div>
 	<div class="wrapper">
 	<div id="menubar">
-		<h3>Student: Sai Murali Maitreya Javvadi</h3>
 		<div id="email" onclick="showHideEmail()">Show my Email</div>
 		<script src="email.js"></script>
 		<img src="Headshot_Javvadi%20Sai%20Murali%20Maitreya.jpg" alt="My headshot" width="50">
@@ -140,11 +138,19 @@
 				}
 
 				// code to send a get request to a third party web api
-				$.get("https://v2.jokeapi.dev/joke/Programming?type=single", 
+				$.get("https://v2.jokeapi.dev/joke/any", 
 					function(result) {
-						var encodedJoke = encodeInput(result.joke);
-						console.log("Response from JokeAPI:" + JSON.stringify(result));
-						$("#response").html("Programming joke of the day:" + encodedJoke);
+						if(result.type == single) {
+							var encodedJoke = encodeInput(result.joke);
+							console.log("Response from JokeAPI:" + JSON.stringify(result));
+							$("#response").html("Joke of the day:" + encodedJoke);
+						}
+						else{
+							var encodedSetup = encodeInput(result.setup);
+							var encodedDelivery = encodeInput(result.delivery);
+							console.log("Response from JokeAPI:" + JSON.stringify(result));
+							$("#response").html("Joke of the day- Setup:" + encodedSetup <br> "Delivery:" + encodedDelivery);
+						}
 					})
 
 				// Code to call a third party api using fetch() and display the response
