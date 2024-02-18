@@ -32,6 +32,12 @@ a {
 	font-weight: 400;
 	color: var(--text-color);
 }
+.email * {
+	margin-top: 1rem;
+	font-size: 1.5rem;
+	font-weight: 400;
+	color: var(--text-color);
+}
 #email {
 	margin-top: 1rem;
 	font-size: 1.5rem;
@@ -119,6 +125,7 @@ a {
 	display: flex;
 	flex-direction: row;
 	gap: 5rem;
+	padding-bottom: 16px;
 }
 .group-3 > div {
 	flex: 1;

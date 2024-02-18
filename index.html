@@ -7,6 +7,7 @@
 	<title>Professional Profile - Sai Murali Maitreya Javvadi</title>
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
   	<script src="https://unpkg.com/feather-icons"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
   	<link rel="stylesheet" href="style.css">
   	<!-- Google tag (gtag.js) -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-HBCXGHNQGF"></script>
@@ -118,13 +119,13 @@
             +1 513-616-3348
           </p>
           <p class="description">
-            <div id="email" onclick="showHideEmail()">Show my Email</div>
+            <div class="email" id="email" onclick="showHideEmail()">Show my Email</div>
           </p>
         </div>
       </div>
       <div class="social">
         <h3 class="title">Socials</h3>
-        <div class="social_items">
+        <div class="social_items" id="social">
           <a href="#" target="_b" class="social_item">
             <i data-feather="github"></i>
             <span>/javvadsa</span>
@@ -219,6 +220,24 @@
   				window.onload = fetchWeather();
 
 
+  				  // Get the element to animate
+  				var animatedElement = document.getElementById('social');
+
+  				// Use anime.js to create a bouncing animation
+  				var bouncingAnimation = anime({
+    				targets: animatedElement,
+    				translateY: [
+      					{ value: 50, duration: 500 },
+      					{ value: 0, duration: 500 }
+    				],
+    			loop: true, // Loop the animation
+    			easing: 'easeInOutQuad' // Use easing for a smoother effect
+  				});
+
+  				// Stop the bouncing animation after 2 seconds
+  				setTimeout(function() {
+    				bouncingAnimation.stop();
+  				}, 2000);
 
   				function setCookie(cname, cvalue, exdays) {
   					const d = new Date();
@@ -247,6 +266,7 @@
   					let lastVisit = getCookie("Last Visit");
   					if (lastVisit != "") {
    						alert("Welcome back!! Your last visit was on " + lastVisit);
+   						setCookie("Last Visit", new Date(), 365);
   					} else {
   						alert("Welcome to my Home page!")
       					setCookie("Last Visit", new Date(), 365);
